@@ -92,7 +92,71 @@ Stored Procedure
      ▼
 Snowflake Task
 ```
+---
+# 🏗 Architecture Diagram
 
+```text
+                          +----------------------+
+                          |      sales.csv       |
+                          |      sales2.csv      |
+                          +----------+-----------+
+                                     |
+                                     |
+                                     ▼
+                      +----------------------------+
+                      |      Internal Stage        |
+                      |       @SALES_STAGE         |
+                      +-------------+--------------+
+                                    |
+                                    |
+                                    ▼
+                     +-----------------------------+
+                     |         COPY INTO           |
+                     |        STG_SALES            |
+                     +-------------+---------------+
+                                   |
+             +---------------------+----------------------+
+             |                                            |
+             |                                            |
+             ▼                                            ▼
++-----------------------------+          +------------------------------+
+|     DIM_PRODUCT             |          |      DIM_CUSTOMER            |
+|    (SCD Type 1)             |          |      (SCD Type 2)            |
+|                             |          |                              |
+| • Update Existing           |          | • Maintain History           |
+| • Insert New Product        |          | • Effective Date             |
+| • No History                |          | • End Date                   |
+|                             |          | • Current Flag               |
++-------------+---------------+          +---------------+--------------+
+              \                                /
+               \                              /
+                \                            /
+                 \                          /
+                  \                        /
+                   ▼                      ▼
+                +--------------------------------------+
+                |            FACT_SALES                |
+                |--------------------------------------|
+                | CUSTOMER_KEY (FK)                    |
+                | PRODUCT_KEY (FK)                     |
+                | QUANTITY                             |
+                | PRICE                                |
+                | SALE_DATE                            |
+                +------------------+-------------------+
+                                   |
+                                   ▼
+                  +--------------------------------+
+                  |    Stored Procedure            |
+                  |      LOAD_SALES_ETL()          |
+                  +----------------+---------------+
+                                   |
+                                   ▼
+                  +--------------------------------+
+                  |      Snowflake Task            |
+                  |     SALES_ETL_TASK            |
+                  |   Scheduled ETL Execution     |
+                  +--------------------------------+
+```
 ---
 
 # 📊 Data Model
