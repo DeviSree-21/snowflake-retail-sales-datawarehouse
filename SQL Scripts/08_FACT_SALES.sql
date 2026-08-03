@@ -1,0 +1,41 @@
+-- ==========================================================
+-- Project : Retail Sales Data Warehouse
+-- File    : 08_FACT_SALES.sql
+-- ==========================================================
+
+INSERT INTO FACT_SALES
+(
+SALE_ID,
+CUSTOMER_KEY,
+PRODUCT_KEY,
+QUANTITY,
+PRICE,
+SALE_DATE
+)
+
+SELECT
+
+S.SALE_ID,
+D.CUSTOMER_KEY,
+P.PRODUCT_KEY,
+S.QUANTITY,
+S.PRICE,
+S.SALE_DATE
+
+FROM STG_SALES S
+
+JOIN DIM_CUSTOMER D
+
+ON S.CUSTOMER_ID=D.CUSTOMER_ID
+AND D.IS_CURRENT='Y'
+
+JOIN DIM_PRODUCT P
+
+ON S.PRODUCT_ID=P.PRODUCT_ID
+
+WHERE NOT EXISTS
+(
+SELECT 1
+FROM FACT_SALES F
+WHERE F.SALE_ID=S.SALE_ID
+);
