@@ -1,0 +1,35 @@
+-- ==========================================================
+-- Project : Retail Sales Data Warehouse
+-- File    : 09_Stored_Procedure.sql
+-- ==========================================================
+
+CREATE OR REPLACE PROCEDURE LOAD_SALES_ETL()
+RETURNS STRING
+LANGUAGE SQL
+AS
+$$
+BEGIN
+
+-- Load Product Dimension
+
+MERGE INTO DIM_PRODUCT D
+USING
+(
+SELECT DISTINCT PRODUCT_ID,PRODUCT_NAME,CATEGORY
+FROM STG_SALES
+)S
+ON D.PRODUCT_ID=S.PRODUCT_ID
+
+WHEN MATCHED THEN
+UPDATE SET
+PRODUCT_NAME=S.PRODUCT_NAME,
+CATEGORY=S.CATEGORY
+
+WHEN NOT MATCHED THEN
+INSERT(PRODUCT_ID,PRODUCT_NAME,CATEGORY)
+VALUES(S.PRODUCT_ID,S.PRODUCT_NAME,S.CATEGORY);
+
+RETURN 'ETL Completed Successfully';
+
+END;
+$$;
