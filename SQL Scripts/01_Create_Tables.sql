@@ -1,0 +1,56 @@
+-- ==========================================================
+-- Project : Retail Sales Data Warehouse
+-- File    : 01_Create_Tables.sql
+-- Author  : Devi Sree
+-- ==========================================================
+
+-- Create Staging Table
+CREATE OR REPLACE TABLE STG_SALES
+(
+    SALE_ID NUMBER,
+    CUSTOMER_ID NUMBER,
+    CUSTOMER_NAME STRING,
+    CITY STRING,
+    STATE STRING,
+    PRODUCT_ID NUMBER,
+    PRODUCT_NAME STRING,
+    CATEGORY STRING,
+    QUANTITY NUMBER,
+    PRICE NUMBER(10,2),
+    SALE_DATE DATE
+);
+
+-- Create Product Dimension
+CREATE OR REPLACE TABLE DIM_PRODUCT
+(
+    PRODUCT_KEY NUMBER DEFAULT PRODUCT_KEY_SEQ.NEXTVAL,
+    PRODUCT_ID NUMBER,
+    PRODUCT_NAME STRING,
+    CATEGORY STRING
+);
+
+-- Create Customer Dimension (SCD Type 2)
+CREATE OR REPLACE TABLE DIM_CUSTOMER
+(
+    CUSTOMER_KEY NUMBER DEFAULT CUSTOMER_KEY_SEQ.NEXTVAL,
+    CUSTOMER_ID NUMBER,
+    CUSTOMER_NAME STRING,
+    CITY STRING,
+    STATE STRING,
+    EFFECTIVE_DATE DATE,
+    END_DATE DATE,
+    IS_CURRENT STRING
+);
+
+-- Create Fact Table
+CREATE OR REPLACE TABLE FACT_SALES
+(
+    SALE_ID NUMBER,
+    CUSTOMER_KEY NUMBER,
+    PRODUCT_KEY NUMBER,
+    QUANTITY NUMBER,
+    PRICE NUMBER(10,2),
+    SALE_DATE DATE
+);
+
+Added table creation scripts
