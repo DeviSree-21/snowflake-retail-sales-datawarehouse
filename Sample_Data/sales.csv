@@ -1,1 +1,16 @@
-
+SALE_ID,CUSTOMER_ID,CUSTOMER_NAME,CITY,STATE,PRODUCT_ID,PRODUCT_NAME,CATEGORY,QUANTITY,PRICE,SALE_DATE
+1001,101,Devi,Chennai,Tamil Nadu,501,Laptop,Electronics,1,55000,2026-07-01
+1002,102,Arun,Bangalore,Karnataka,502,Mobile,Electronics,2,25000,2026-07-01
+1003,103,Priya,Hyderabad,Telangana,503,Shoes,Fashion,3,3000,2026-07-02
+1004,104,Rahul,Mumbai,Maharashtra,504,Watch,Accessories,1,5000,2026-07-02
+1005,105,Kiran,Kochi,Kerala,505,Headphones,Electronics,2,2000,2026-07-03
+1006,106,Meena,Coimbatore,Tamil Nadu,506,T-Shirt,Fashion,4,800,2026-07-03
+1007,107,Vijay,Madurai,Tamil Nadu,507,Keyboard,Electronics,1,1500,2026-07-04
+1008,108,Anitha,Pune,Maharashtra,508,Mouse,Electronics,2,700,2026-07-04
+1009,109,Suresh,Delhi,Delhi,509,Bag,Fashion,1,1200,2026-07-05
+1010,110,Divya,Jaipur,Rajasthan,510,Tablet,Electronics,1,30000,2026-07-05
+1011,101,Devi,Chennai,Tamil Nadu,502,Mobile,Electronics,1,25000,2026-07-06
+1012,102,Arun,Bangalore,Karnataka,503,Shoes,Fashion,2,3000,2026-07-06
+1013,103,Priya,Hyderabad,Telangana,505,Headphones,Electronics,1,2000,2026-07-07
+1014,104,Rahul,Mumbai,Maharashtra,506,T-Shirt,Fashion,3,800,2026-07-07
+1015,105,Kiran,Kochi,Kerala,507,Keyboard,Electronics,2,1500,2026-07-08

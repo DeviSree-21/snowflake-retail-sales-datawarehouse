@@ -1,0 +1,6 @@
+SALE_ID,CUSTOMER_ID,CUSTOMER_NAME,CITY,STATE,PRODUCT_ID,PRODUCT_NAME,CATEGORY,QUANTITY,PRICE,SALE_DATE
+1016,101,Devi,Bangalore,Karnataka,501,Dell Laptop,Electronics,1,58000,2026-07-09
+1017,103,Priya,Pune,Maharashtra,503,Shoes,Fashion,2,3000,2026-07-09
+1018,111,Sanjay,Chennai,Tamil Nadu,511,Printer,Electronics,1,12000,2026-07-09
+1019,102,Arun,Bangalore,Karnataka,502,Mobile,Electronics,1,25000,2026-07-09
+1020,104,Rahul,Mumbai,Maharashtra,504,Watch,Accessories,2,5000,2026-07-09
